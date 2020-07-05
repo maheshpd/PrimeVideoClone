@@ -1,12 +1,24 @@
 package com.createsapp.primevideoclone.model;
 
-public class AllCategory {
-    String categoryTitle;
-    Integer categoryId;
+import java.util.List;
 
-    public AllCategory(Integer categoryId, String categoryTitle) {
-        this.categoryTitle = categoryTitle;
+public class AllCategory {
+    Integer categoryId;
+    String categoryTitle;
+    private List<CategoryItem> categoryItemList = null;
+
+    public AllCategory(Integer categoryId, String categoryTitle, List<CategoryItem> categoryItemList) {
         this.categoryId = categoryId;
+        this.categoryTitle = categoryTitle;
+        this.categoryItemList = categoryItemList;
+    }
+
+    public List<CategoryItem> getCategoryItemList() {
+        return categoryItemList;
+    }
+
+    public void setCategoryItemList(List<CategoryItem> categoryItemList) {
+        this.categoryItemList = categoryItemList;
     }
 
     public String getCategoryTitle() {

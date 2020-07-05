@@ -11,6 +11,7 @@ import com.createsapp.primevideoclone.adapter.BannerMoviesPagerAdapter;
 import com.createsapp.primevideoclone.adapter.MainRecyclerAdapter;
 import com.createsapp.primevideoclone.model.AllCategory;
 import com.createsapp.primevideoclone.model.BannerMovies;
+import com.createsapp.primevideoclone.model.CategoryItem;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -101,10 +102,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //first we will add catitem data
+        List<CategoryItem> homeCateListItem1 = new ArrayList<>();
+        homeCateListItem1.add(new CategoryItem(1, "7500", "https://static2.showtimes.com/poster/660x980/7500-amazon-prime-video-145865.jpg", ""));
+        homeCateListItem1.add(new CategoryItem(2, "7500", "https://static2.showtimes.com/poster/660x980/7500-amazon-prime-video-145865.jpg", ""));
+        homeCateListItem1.add(new CategoryItem(3, "7500", "https://static2.showtimes.com/poster/660x980/7500-amazon-prime-video-145865.jpg", ""));
+        homeCateListItem1.add(new CategoryItem(4, "7500", "https://static2.showtimes.com/poster/660x980/7500-amazon-prime-video-145865.jpg", ""));
+        homeCateListItem1.add(new CategoryItem(5, "7500", "https://static2.showtimes.com/poster/660x980/7500-amazon-prime-video-145865.jpg", ""));
+
+
         allCategoryList = new ArrayList<>();
-        allCategoryList.add(new AllCategory(1, "Bollywood"));
-        allCategoryList.add(new AllCategory(1, "HollyWood"));
-        allCategoryList.add(new AllCategory(1, "Kids"));
+        allCategoryList.add(new AllCategory(1, "Watch next Tv and movies", homeCateListItem1));
+        allCategoryList.add(new AllCategory(2, "Movies in Hindi", homeCateListItem1));
+        allCategoryList.add(new AllCategory(3, "Kids and family movies", homeCateListItem1));
+        allCategoryList.add(new AllCategory(4, "Amazon Original series", homeCateListItem1));
 
         //here we pass array to recycler setup method
         setMainRecycler(allCategoryList);
