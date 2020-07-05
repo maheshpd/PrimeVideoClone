@@ -20,6 +20,11 @@ public class BannerMoviesPagerAdapter extends PagerAdapter {
     Context context;
     List<BannerMovies> bannerMoviesList;
 
+    public BannerMoviesPagerAdapter(Context context, List<BannerMovies> bannerMoviesList) {
+        this.context = context;
+        this.bannerMoviesList = bannerMoviesList;
+    }
+
     @Override
     public int getCount() {
         return bannerMoviesList.size();
