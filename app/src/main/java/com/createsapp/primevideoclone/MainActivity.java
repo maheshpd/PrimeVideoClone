@@ -1,8 +1,11 @@
 package com.createsapp.primevideoclone;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -12,6 +15,7 @@ import com.createsapp.primevideoclone.adapter.MainRecyclerAdapter;
 import com.createsapp.primevideoclone.model.AllCategory;
 import com.createsapp.primevideoclone.model.BannerMovies;
 import com.createsapp.primevideoclone.model.CategoryItem;
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -33,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView mainRecycler;
     List<AllCategory> allCategoryList;
 
+    Toolbar toolbar;
+    NestedScrollView nestedScrollView;
+    AppBarLayout appBarLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
 
         indicatorTab = findViewById(R.id.tab_indicator);
         categoryTab = findViewById(R.id.tabLayout);
+        nestedScrollView = findViewById(R.id.nested_scroll);
+        appBarLayout = findViewById(R.id.appbar);
+//        toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         homeBannerList = new ArrayList<>();
         homeBannerList.add(new BannerMovies(1, "PONMANGAL VANDHAL", "http://androidappsforyoutube.s3.ap-south-1.amazonaws.com/primevideo/banners/homebanner1.png", ""));
@@ -76,16 +87,21 @@ public class MainActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 switch (tab.getPosition()) {
                     case 1:
+                        //lets see behavior right noew
+                        setScrollToDefaultState();
                         setBannerMoviesPagerAdapter(tvShowBannerList);
                         return;
                     case 2:
+                        setScrollToDefaultState();
                         setBannerMoviesPagerAdapter(movieBannerList);
                         return;
                     case 3:
+                        setScrollToDefaultState();
                         setBannerMoviesPagerAdapter(kidsBannerList);
                         return;
 
                     default:
+                        setScrollToDefaultState();
                         setBannerMoviesPagerAdapter(homeBannerList);
                 }
 
@@ -153,5 +169,11 @@ public class MainActivity extends AppCompatActivity {
         mainRecycler.setLayoutManager(layoutManager);
         mainRecyclerAdapter = new MainRecyclerAdapter(this, allCategoryList);
         mainRecycler.setAdapter(mainRecyclerAdapter);
+    }
+
+    private void setScrollToDefaultState() {
+        nestedScrollView.fullScroll(View.FOCUS_UP);
+        nestedScrollView.scrollTo(0, 0);
+        appBarLayout.setExpanded(true);
     }
 }
