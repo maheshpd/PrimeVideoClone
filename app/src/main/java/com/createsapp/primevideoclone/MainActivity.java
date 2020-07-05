@@ -3,9 +3,13 @@ package com.createsapp.primevideoclone;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.createsapp.primevideoclone.adapter.BannerMoviesPagerAdapter;
+import com.createsapp.primevideoclone.adapter.MainRecyclerAdapter;
+import com.createsapp.primevideoclone.model.AllCategory;
 import com.createsapp.primevideoclone.model.BannerMovies;
 import com.google.android.material.tabs.TabLayout;
 
@@ -23,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
     List<BannerMovies> tvShowBannerList;
     List<BannerMovies> movieBannerList;
     List<BannerMovies> kidsBannerList;
+
+    MainRecyclerAdapter mainRecyclerAdapter;
+    RecyclerView mainRecycler;
+    List<AllCategory> allCategoryList;
 
 
     @Override
@@ -92,6 +100,14 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        allCategoryList = new ArrayList<>();
+        allCategoryList.add(new AllCategory(1, "Bollywood"));
+        allCategoryList.add(new AllCategory(1, "HollyWood"));
+        allCategoryList.add(new AllCategory(1, "Kids"));
+
+        //here we pass array to recycler setup method
+        setMainRecycler(allCategoryList);
     }
 
     private void setBannerMoviesPagerAdapter(List<BannerMovies> bannerMoviesList) {
@@ -119,4 +135,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    public void setMainRecycler(List<AllCategory> allCategoryList) {
+        mainRecycler = findViewById(R.id.main_recycler);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        mainRecycler.setLayoutManager(layoutManager);
+        mainRecyclerAdapter = new MainRecyclerAdapter(this, allCategoryList);
+        mainRecycler.setAdapter(mainRecyclerAdapter);
+    }
 }
