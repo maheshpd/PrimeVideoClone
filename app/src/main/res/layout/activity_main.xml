@@ -74,6 +74,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
-            app:tabIndicatorHeight="0dp" />
+            app:tabBackground="@drawable/indicator_selector"
+            app:tabIndicatorHeight="0dp"
+            app:tabMaxWidth="15dp" />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
