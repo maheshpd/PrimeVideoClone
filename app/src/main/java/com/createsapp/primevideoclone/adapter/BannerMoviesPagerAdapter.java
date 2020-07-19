@@ -1,6 +1,7 @@
 package com.createsapp.primevideoclone.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
+import com.createsapp.primevideoclone.MovieDetails;
 import com.createsapp.primevideoclone.R;
 import com.createsapp.primevideoclone.model.BannerMovies;
 
@@ -50,6 +52,18 @@ public class BannerMoviesPagerAdapter extends PagerAdapter {
         //here i will use glide library for fetching image from url and set it to image view
         Glide.with(context).load(bannerMoviesList.get(position).getImageUrl()).into(bannerImage);
         container.addView(view);
+
+        bannerImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context, MovieDetails.class);
+                i.putExtra("movieId", bannerMoviesList.get(position).getId());
+                i.putExtra("movieName", bannerMoviesList.get(position).getMoviesName());
+                i.putExtra("movieImageUrl", bannerMoviesList.get(position).getImageUrl());
+                i.putExtra("movieFile", bannerMoviesList.get(position).getFileUrl());
+                context.startActivity(i);
+            }
+        });
         return view;
     }
 }
