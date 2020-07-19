@@ -2,7 +2,8 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.0"
+    buildToolsVersion "30.0.1"
+
 
     defaultConfig {
         applicationId "com.createsapp.primevideoclone"
@@ -10,6 +11,8 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+
+
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -39,5 +42,8 @@ dependencies {
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    //exoplayer
+    implementation 'com.google.android.exoplayer:exoplayer:2.9.6'
 
 }
