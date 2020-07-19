@@ -16,5 +16,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:controller_layout_id="@layout/custome_controller"
         app:shutter_background_color="#000000" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/exo_player"
+        app:layout_constraintStart_toStartOf="@+id/exo_player"
+        app:layout_constraintTop_toTopOf="@+id/exo_player" />
 </androidx.constraintlayout.widget.ConstraintLayout>
